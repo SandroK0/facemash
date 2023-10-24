@@ -1,0 +1,33 @@
+{% extends 'base.html'%}{% block body%}
+<h1>Leaderboard</h1>
+<style>
+  table {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  th,
+  td {
+    border: 1px solid black;
+  }
+</style>
+<table>
+  <tr>
+    <th>Image</th>
+    <th>Rating</th>
+  </tr>
+  {% for image in Leaderboard %}
+  <tr>
+    <td>
+      <img
+        src='data:image/png;base64,{{ base64.b64encode(image.image).decode("utf-8") }}'
+      />
+    </td>
+    <td>
+      <p>{{image.rating}}</p>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

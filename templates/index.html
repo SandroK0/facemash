@@ -1,0 +1,72 @@
+{% extends 'base.html'%} {% block body%}
+<div id="main">
+  <h3>Were we let in for our looks? No. Will we be judged on them? Yes.</h3>
+  <h2>Who's Hotter? Click to Choose.</h2>
+  <table>
+    <tr>
+      <td>
+        <form id="imageForm1" method="post">
+          <input
+            type="hidden"
+            name="winner_id"
+            value="{{images['image_1']['id']}}"
+          />
+          <input
+            type="hidden"
+            name="winner_rating"
+            value="{{images['image_1']['rating']}}"
+          />
+          <input
+            type="hidden"
+            name="looser_id"
+            value="{{images['image_2']['id']}}"
+          />
+          <input
+            type="hidden"
+            name="looser_rating"
+            value="{{images['image_2']['rating']}}"
+          />
+          <img
+            name="image"
+            src="data:image/png;base64,{{ images['image_1']['image'] }}"
+            onclick="document.getElementById('imageForm1').submit();"
+          />
+        </form>
+        <!-- <p>rating: {{images['image_1']['rating']}}</p> -->
+      </td>
+      <td>OR</td>
+      <td>
+        <form id="imageForm2" method="post">
+          <input
+            type="hidden"
+            name="winner_id"
+            value="{{images['image_2']['id']}}"
+          />
+          <input
+            type="hidden"
+            name="winner_rating"
+            value="{{images['image_2']['rating']}}"
+          />
+          <input
+            type="hidden"
+            name="looser_id"
+            value="{{images['image_1']['id']}}"
+          />
+          <input
+            type="hidden"
+            name="looser_rating"
+            value="{{images['image_1']['rating']}}"
+          />
+          <img
+            name="image"
+            src="data:image/png;base64,{{ images['image_2']['image'] }}"
+            onclick="document.getElementById('imageForm1').submit();"
+          />
+        </form>
+        <!-- <p>rating: {{images['image_2']['rating']}}</p> -->
+      </td>
+    </tr>
+  </table>
+</div>
+
+{% endblock%}
