@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template, request
+from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from random import randint
 from ranking_algorithm import EloRating
@@ -60,9 +60,14 @@ def index():
 @app.route("/leaderboard")
 def leaderboard():
 
-    Leaderboard = db.session.query(Image).order_by(Image.rating.desc()).all()
+    data = db.session.query(Image).order_by(Image.rating.desc()).all()
 
-    return render_template("leaderboard.html", Leaderboard=Leaderboard, base64=base64, i=1)
+   
+    
+
+   
+
+    return render_template("leaderboard.html", Leaderboard=data, base64=base64)
 
 
 with app.app_context():
